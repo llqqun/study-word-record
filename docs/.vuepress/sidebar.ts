@@ -14,6 +14,7 @@ export default {
         "/views/vue2/vnode.md",
         "/views/vue2/template.md",
         "/views/vue2/config.md",
+        "/views/vue2/asyncComponents.md",
       ],
     },
   ],
@@ -44,6 +45,12 @@ export default {
     {
       text: "css记录",
       children: ["/views/css/cssFAQ.md"],
+    },
+  ],
+  "/views/tinymce/": [
+    {
+      text: "tinymce6记录",
+      children: ["/views/tinymce/introduce.md"],
     },
   ],
 };

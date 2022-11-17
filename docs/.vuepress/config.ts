@@ -9,7 +9,7 @@ const __dirname = getDirname(import.meta.url)
 export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
-  title: '好好学习, 天天向上',
+  title: '已有限的知识,获取无限的财富',
   description: 'LQ的学习记录网站',
   head: [['link', { rel: 'icon', href: '/favicon-32x32.png' }]],
   theme: defaultTheme({
