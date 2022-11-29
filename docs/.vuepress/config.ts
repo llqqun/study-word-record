@@ -14,7 +14,7 @@ export default defineUserConfig({
   head: [['link', { rel: 'icon', href: '/favicon-32x32.png' }]],
   theme: defaultTheme({
     logo: '/hero.png',
-    sidebarDepth: 6,
+    sidebarDepth: 5,
     navbar,
     sidebar,
   }),

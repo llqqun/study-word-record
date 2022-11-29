@@ -26,6 +26,7 @@ export default {
         "/views/javaScript/Promise.md",
         "/views/javaScript/javaScript.md",
         "/views/javaScript/utils.md",
+        "/views/javaScript/function.md",
       ],
     },
   ],
