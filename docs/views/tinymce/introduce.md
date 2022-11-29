@@ -18,8 +18,6 @@
 | releaseDate     | String                                                       |                                               |          |
 | suffix          | String                                                       | 当前要添加到每个插件/主题的后缀，例如".min"。 |          |
 
-
-
 ## 函数
 
 | Name                                                         | Summary                                                      | Defined by |
@@ -49,3 +47,4 @@
 | [trim()](https://www.tiny.cloud/docs/tinymce/6/apis/tinymce.root/#trim) | Removes whitespace from the beginning and end of a string.   | `tinymce`  |
 | [walk()](https://www.tiny.cloud/docs/tinymce/6/apis/tinymce.root/#walk) | Executed the specified function for each item in a object tree. | `tinymce`  |
 
+## core class  
