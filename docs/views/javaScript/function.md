@@ -24,6 +24,23 @@ var addMore = add.bind(null, 2, 3)
 
 通过偏应用函数实现,它是把一个多参数函数转换为一个嵌套一元函数的过程  
 
+```js
+function disposeQuery () {
+      const args = Array.prototype.slice.call(arguments)
+      function curried () {
+        args.push(...arguments)
+        return curried
+      }
+      curried.valueOf = function () {
+        return args.reduce((a1, a2) => a1 + a2)
+      }
+      curried.toString = function () {
+        return args.reduce((a1, a2) => a1 + a2)
+      }
+      return curried
+    }
+```
+
 ## 函数的反柯里化  
 
 ## 函数组合  
