@@ -1,10 +1,8 @@
-
 ```
 npm install -g svgo
 ```
 
-
-```  
+```
 svgo [OPTIONS] [ARGS]
 
 Options:
@@ -26,17 +24,20 @@ Options:
 Arguments:
   INPUT : 别名 --input
   OUTPUT : 别名 --output
-  ```  
-  
-  > 单个文件使用  
-  ```
-  svgo test.svg 
-  or
-  svgo test.svg test.min.svg
-  ```
-  > 文件夹使用  
-  ```
-  svgo -f ../path/to/folder/with/svg/files
-  or 
-  svgo -f ../path/to/folder/with/svg/files -o ../path/to/folder/with/svg/output
-  ```
+```
+
+> 单个文件使用
+
+```
+svgo test.svg
+or
+svgo test.svg test.min.svg
+```
+
+> 文件夹使用
+
+```
+svgo -f ../path/to/folder/with/svg/files
+or
+svgo -f ../path/to/folder/with/svg/files -o ../path/to/folder/with/svg/output
+```

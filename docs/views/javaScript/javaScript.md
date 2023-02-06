@@ -774,7 +774,7 @@ console.log(typeof PromiseDemo); // 'function'
 
 堆,栈,webAPIs, 回调队列(微任务队列)
 
-![event-loop](D:\codeWork\images\event-loop.png)
+![event-loop](\images\event-loop.png)
 
 如上图为事件循环示例图（或 JS 运行机制图），流程如下：
 

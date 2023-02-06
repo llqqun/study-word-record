@@ -27,6 +27,7 @@ export default {
         "/views/javaScript/javaScript.md",
         "/views/javaScript/utils.md",
         "/views/javaScript/function.md",
+        "/views/javaScript/dom.md",
       ],
     },
   ],
