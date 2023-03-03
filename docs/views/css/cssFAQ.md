@@ -10,7 +10,7 @@
 
 元素设置为 `display: inline-block;`后兄弟元素间存在极小的间隙
 
-解决方案, 给父元素添加样式` font-size: 0;`
+解决方案, 给父元素添加样式`font-size: 0;`
 
 2. 与样式`overflow: hidden;`同时存在则会产生元素错位效果
 
@@ -19,7 +19,7 @@
 
 解决方案: 错位元素添加 `vertical-align: top;`
 
-### 注意:
+### 注意
 
 浮动元素不会压住文字
 
@@ -140,7 +140,7 @@ E:nth-of-type(n) => 先从兄弟元素中匹配 E 类型的元素,然后根据 n
 
 ```
 
-示例 demo: https://codepen.io/lancelovejava/pen/popwgpG
+示例 demo: <https://codepen.io/lancelovejava/pen/popwgpG>
 
 ## 动画**animation**
 
@@ -327,3 +327,10 @@ div {
 }
 
 ```
+
+### 阴影
+
+```css
+    box-shadow: 0 0 20px 13px red; // 常用给盒子添加阴影
+    filter: drop-shadow(0px 0px 22px red); // 通过滤镜添加阴影,不支持IE
+```  
