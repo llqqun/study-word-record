@@ -26,7 +26,6 @@ build: {
     }
 ```
 
-
 ```js
 // plugins/svg-plugin.js 配置
 import Vue from 'vue'
@@ -94,4 +93,6 @@ export default {
 </style>
 
 ```
+
+## 引入第三方包es6语法未转换
 
