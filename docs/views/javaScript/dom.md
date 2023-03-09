@@ -19,3 +19,7 @@ var insertedNode = parentNode.insertBefore(newNode, referenceNode);
 > 根据偏移位置对Text节点进行切割  
 > 分割后的文本节点还可以使用Node.normalize方法来合并  
 > offset文本节点的索引,从1开始计数  
+
+### getBoundingClientRect()  获取元素相对窗口的位置信息及元素本身宽高
+
+Element.getBoundingClientRect() 方法返回一个 DOMRect 对象，其提供了元素的大小及其相对于视口的位置。
