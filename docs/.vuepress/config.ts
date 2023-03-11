@@ -9,8 +9,8 @@ const __dirname = getDirname(import.meta.url)
 export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
-  title: '已有限的知识,获取无限的财富',
-  description: 'LQ的学习记录网站',
+  title: '这是什么?',
+  description: 'WEB笔记本',
   head: [['link', { rel: 'icon', href: '/favicon-32x32.png' }]],
   theme: defaultTheme({
     logo: '/hero.png',

@@ -827,11 +827,11 @@ fn = function (y) {
 bar(10); // 2、进入bar函数上下文环境
 ```
 
-![img](\images\js_sx.png)
+![img](/images/js_sx.png)
 
 ### 宏任务 与 微任务
 
-![](D:\codeWork\images\event-loop.webp)
+![](/images/event-loop.webp)
 
 个人理解的前端事件循环,任务处理流程:
 
