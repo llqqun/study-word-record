@@ -1,5 +1,46 @@
 # JS工具函数
 
+## 万亿以下数字转中文
+
+```js
+function numToChines(num) {
+            let resultNum = ''
+            const strArray = num.toString().replace(/(?=(\d{4})+$)/g, ',').split(',').filter(Boolean)
+            const chart = ['零', '一', '二', '三', '四', '五', '六', '七', '八', '九']
+            const units = ['', '十', '百', '千']
+            const maxUnits = ['', '万', '亿']
+            function _transform(numStr) {
+                let result = ''
+                for (let index = 0; index < numStr.length; index++) {
+                    const digit = +numStr[index];
+                    const n = chart[digit]
+                    const u = units[numStr.length - 1 - index]
+                    // 如果等于零就不添加单位
+                    if (digit === 0) {
+                        // 排除连续为零的情况
+                        if (result[result.length - 1] !== chart[0]) {
+                            result += n
+                        }
+                    } else {
+                        result += n + u
+                    }
+                }
+                // 排除末尾是零的情况
+                if (result[result.length - 1] === chart[0]) {
+                    result = result.slice(0, -1)
+                }
+                return result
+            }
+
+            for (let i = 0; i < strArray.length; i++) {
+                const r = _transform(strArray[i]);
+                resultNum += r ? r + maxUnits[strArray.length - 1 - i] : ''
+            }
+            return resultNum
+        }
+        console.log(numToChines(120000))
+```
+
 ## 判断当前环境是否移动端
 
 ```javascript
