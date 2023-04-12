@@ -31,6 +31,20 @@ body,html{
 }
 ```
 
+### ios 底部横杠兼容问题
+
+添加meta标签
+
+```html
+    <meta name="viewport" content: "width=device-width, initial-scale=1, ,maximum-scale=1, user-scalable=no, viewport-fit=cover">
+```
+
+```css
+// 对应的元素上添加下面样式
+ padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+```
+
 ### 图片拖拽
 
 默认浏览器图片是能拖拽的添加下面设置禁止拖拽
