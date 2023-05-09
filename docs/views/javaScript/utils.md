@@ -1,5 +1,16 @@
 # JS工具函数
 
+## 数据类型判断
+
+```js
+export const typeOf = function(obj) {
+  return Object.prototype.toString.call(obj).slice(8, -1).toLowerCase()
+}
+typeOf(123) // 'number'
+typeOf('123') // 'string'
+typeOf({}) // 'object'
+```
+
 ## 万亿以下数字转中文
 
 ```js
@@ -62,8 +73,6 @@ isPc() {
   }
 ```
 
-
-
 函数柯里化
 
 ```javascript
@@ -80,8 +89,6 @@ function add(params) {
       }
 add(1)(2)(3)(4).getValue()
 ```
-
-
 
 ## 冻结对象
 
@@ -121,8 +128,6 @@ function generateKey(keyLength = 18) {
 }
 ```
 
-
-
 ## 节流防抖
 
 ```javascript
@@ -151,8 +156,6 @@ function antishake(fn = Function, delay = 600) {
   }
 }
 ```
-
-
 
 ## rem 布局函数
 
@@ -219,8 +222,6 @@ function parseTime(time, cFormat) {
   })
 }
 ```
-
-
 
 ## 资源路径转换
 
@@ -291,7 +292,7 @@ const num = OddEven(2);
 
 ## 生成范围随机数
 
-```
+```js
 const RandomNum = (min, max) => Math.floor(Math.random() * (max - min + 1)) + min;
 const num = RandomNum(1, 10); // 5
 ```
@@ -333,11 +334,9 @@ function uniqueArray(array) {
 
 ## 混淆数组
 
-```
+```js
 const arr = [0, 1, 2, 3, 4, 5].slice().sort(() => Math.random() - .5);
 ```
-
-
 
 ## 首屏加载时间计算和白屏事件计算
 
@@ -345,8 +344,6 @@ const arr = [0, 1, 2, 3, 4, 5].slice().sort(() => Math.random() - .5);
 console.log('首屏时间:' + (window.performance.timing.domInteractive - window.performance.timing.navigationStart))
     console.log('白屏时间:' + (window.performance.timing.domLoading - window.performance.timing.navigationStart))
 ```
-
-
 
 ## 图片懒加载
 
@@ -417,8 +414,6 @@ const text = await navigator.clipboard.readText();
 navigator.clipboard.writeText(selectedText)
 ```
 
-
-
 ## 实现页面不可复制
 
 css
@@ -438,8 +433,6 @@ document.body.oncopy = (e) => {
   e.preventDefault();
 };
 ```
-
-
 
 ## 自定义HTML模板
 
@@ -474,7 +467,7 @@ var data = { name: 'zs', age: 28, gender: '男', address: '北京顺义马坡' }
 
 ## 过滤数组
 
-```
+```js
 const arr = [undefined, null, "", 0, false, NaN, 1, 2].filter(Boolean);
 ```
 
@@ -521,7 +514,7 @@ function AutoResponse(width = 750) {
 
 ## 过滤XSS攻击
 
-```
+```js
 function FilterXss(content) {
     let elem = document.createElement("div");
     elem.innerText = content;
@@ -590,7 +583,7 @@ imgarr.forEach(async (item,index) => {
   let blob = await response.blob() // 创建隐藏的可下载链接
   let objectUrl = window.URL.createObjectURL(blob)
   let type = item.src.substring(item.src.lastIndexOf('.'))
-	// 延时下载 浏览器下载并发时通过延时解决
+ // 延时下载 浏览器下载并发时通过延时解决
         setTimeout(() => {
             let a = document.createElement('a');
             console.log(index, objectUrl)
@@ -622,7 +615,7 @@ var htmlSvg =
   "</foreignObject></svg>";
 ```
 
-https://codepen.io/lancelovejava/pen/xxWMKgj
+<https://codepen.io/lancelovejava/pen/xxWMKgj>
 
 ## 首屏加载动画实现
 
@@ -717,8 +710,6 @@ https://codepen.io/lancelovejava/pen/xxWMKgj
   </body>
 ```
 
-
-
 ```javascript
 onMounted(() => {
   let loadDOM: HTMLDivElement | null = document.querySelector("#apploading");
@@ -731,4 +722,3 @@ onMounted(() => {
 });
 
 ```
-
