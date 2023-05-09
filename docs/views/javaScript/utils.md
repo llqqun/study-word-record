@@ -1,5 +1,102 @@
 # JS工具函数
 
+## 金额格式化
+
+```js
+/**
+ * 
+ * number 格式化金额
+ * decimals 保留小数位数
+ * dec_point  小数点符合
+ * thousands_sep  千分位符合
+ * */
+export const moneyFormat = (number, decimals, dec_point, thousands_sep) => {
+  number = (number + '').replace(/[^0-9+-Ee.]/g, '')
+  const n = !isFinite(+number) ? 0 : +number
+  const prec = !isFinite(+decimals) ? 2 : Math.abs(decimals)
+  const sep = typeof thousands_sep === 'undefined' ? ',' : thousands_sep
+  const dec = typeof dec_point === 'undefined' ? '.' : dec_point
+  let s = ''
+  const toFixedFix = function(n, prec) {
+    const k = Math.pow(10, prec)
+    return '' + Math.ceil(n * k) / k
+  }
+  s = (prec ? toFixedFix(n, prec) : '' + Math.round(n)).split('.')
+  const re = /(-?\d+)(\d{3})/
+  while (re.test(s[0])) {
+    s[0] = s[0].replace(re, '$1' + sep + '$2')
+  }
+
+  if ((s[1] || '').length < prec) {
+    s[1] = s[1] || ''
+    s[1] += new Array(prec - s[1].length + 1).join('0')
+  }
+  return s.join(dec)
+}
+```
+
+## 滚动至页面顶部
+
+```js
+const scrollToTop = () => {
+  const height = document.documentElement.scrollTop || document.body.scrollTop;
+  if (height > 0) {
+    window.requestAnimationFrame(scrollToTop);
+    window.scrollTo(0, height - height / 8);
+  }
+}
+```
+
+## 获取URL参数
+
+```js
+const getSearchParams = () => {
+  const searchPar = new URLSearchParams(window.location.search)
+  const paramsObj = {}
+  for (const [key, value] of searchPar.entries()) {
+    paramsObj[key] = value
+  }
+  return paramsObj
+}
+```
+
+## 内容全屏
+
+```js
+// 进入
+export const launchFullscreen = (element) => {
+  if (element.requestFullscreen) {
+    element.requestFullscreen()
+  } else if (element.mozRequestFullScreen) {
+    element.mozRequestFullScreen()
+  } else if (element.msRequestFullscreen) {
+    element.msRequestFullscreen()
+  } else if (element.webkitRequestFullscreen) {
+    element.webkitRequestFullScreen()
+  }
+}
+// 退出
+export const exitFullscreen = () => {
+  if (document.exitFullscreen) {
+    document.exitFullscreen()
+  } else if (document.msExitFullscreen) {
+    document.msExitFullscreen()
+  } else if (document.mozCancelFullScreen) {
+    document.mozCancelFullScreen()
+  } else if (document.webkitExitFullscreen) {
+    document.webkitExitFullscreen()
+  }
+}
+```
+
+## 手机号脱敏
+
+```js
+export const hideMobile = (mobile) => {
+  return mobile.replace(/^(\d{3})\d{4}(\d{4})$/, "$1****$2")
+}
+```
+
 ## 数据类型判断
 
 ```js
@@ -492,6 +589,83 @@ function deepClone(source) {
   });
   return targetObj;
 }
+// 
+const clone = parent => {
+  // 判断类型
+  const isType = (obj, type) => {
+    if (typeof obj !== "object") return false;
+    const typeString = Object.prototype.toString.call(obj);
+    let flag;
+    switch (type) {
+      case "Array":
+        flag = typeString === "[object Array]";
+        break;
+      case "Date":
+        flag = typeString === "[object Date]";
+        break;
+      case "RegExp":
+        flag = typeString === "[object RegExp]";
+        break;
+      default:
+        flag = false;
+    }
+    return flag;
+  };
+
+  // 处理正则
+  const getRegExp = re => {
+    var flags = "";
+    if (re.global) flags += "g";
+    if (re.ignoreCase) flags += "i";
+    if (re.multiline) flags += "m";
+    return flags;
+  };
+  // 维护两个储存循环引用的数组
+  const parents = [];
+  const children = [];
+
+  const _clone = parent => {
+    if (parent === null) return null;
+    if (typeof parent !== "object") return parent;
+
+    let child, proto;
+
+    if (isType(parent, "Array")) {
+      // 对数组做特殊处理
+      child = [];
+    } else if (isType(parent, "RegExp")) {
+      // 对正则对象做特殊处理
+      child = new RegExp(parent.source, getRegExp(parent));
+      if (parent.lastIndex) child.lastIndex = parent.lastIndex;
+    } else if (isType(parent, "Date")) {
+      // 对Date对象做特殊处理
+      child = new Date(parent.getTime());
+    } else {
+      // 处理对象原型
+      proto = Object.getPrototypeOf(parent);
+      // 利用Object.create切断原型链
+      child = Object.create(proto);
+    }
+
+    // 处理循环引用
+    const index = parents.indexOf(parent);
+
+    if (index != -1) {
+      // 如果父数组存在本对象,说明之前已经被引用过,直接返回此对象
+      return children[index];
+    }
+    parents.push(parent);
+    children.push(child);
+
+    for (let i in parent) {
+      // 递归
+      child[i] = _clone(parent[i]);
+    }
+
+    return child;
+  };
+  return _clone(parent);
+};
 ```
 
 ## 显示所有DOM边框
