@@ -1,5 +1,31 @@
 # JS工具函数
 
+## 文件下载
+
+> a标签下载通用下载
+
+```js
+          const ele = document.createElement('a')
+          ele.href = filePath
+          const fileType = item.content.slice(filePath.lastIndexOf('.'))
+          ele.download = '文件名称' + fileType
+          ele.click()
+```
+
+> blob下载(使用axios工具)
+
+```js
+const blobData = await axios.get(item.content, { responseType: 'blob'})
+const filePath = URL.createObjectURL(blobData)
+// 将filePath丢到a标签中即可
+```
+
+> 数据流下载
+
+```js
+
+```
+
 ## 金额格式化
 
 ```js
