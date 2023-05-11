@@ -1,5 +1,24 @@
 # JS工具函数
 
+## File, Blob, ArrayBuffer 格式转换
+
+> file 转 ArrayBuffer
+
+```js
+const fr = new FileReader()
+fr.onload = function(loadEvent) {
+  var arrayBuffer = loadEvent.target.result;
+};
+fr.readAsArrayBuffer(file);
+```
+
+> blob 转 file
+
+```js
+const blobData = axios.get('url', { responseType: 'blob'})
+const fileCach = new File([blobData], '测试文件.docx', { type: 'application/vnd.openxmlformats-officedocument.wordprocessingml.document' })
+```
+
 ## 文件下载
 
 > a标签下载通用下载
