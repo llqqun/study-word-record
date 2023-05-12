@@ -32,4 +32,50 @@ git push
 | git show           | 显示内容或修改的内容。                               | git show                                                     | -                              | git show v1显示**“tag v1”**的修改内容git show HEAD显示当前版本的修改文件git show HEAD^显示前一版本所有的修改文件git show HEAD~4显示前4版本的修改文件 |
 | git stash          | 暂存区。                                             | git stash                                                    | -                              | git stash用于保存和恢复工作进度git stash list列出暂存区的文件git stash pop取出最新的一笔，并移除git stash apply取出但不移除git stash clear清除暂存区 |
 | git ls-files       | 查看文件。                                           | git ls-files                                                 | -                              | git ls-files –d查看已经删除的文件git ls-files –d \|xargs git checkout将已删除的文件还原 |
-| git remote         | 操作远程。                                           | git remote                                                   | -                              | git push origin master:newbranch增加远程仓库的分支git remote add newbranch增加远程仓库的分支git remote show列出现在远程有多少版本库git remote rm newbranch删除远程仓库的新分支git remote update更新远程所有版本的分支 |
+| git remote         | 操作远程。                                           | git remote                                                   | -                              | git push origin master:newbranch增加远程仓库的分支git remote add newbranch增加远程仓库的分支git remote show列出现在远程有多少版本库git remote rm newbranch删除远程仓库的新分支git remote update更新远程所有版本的分支  
+
+## 同时使用GITHub 和 GitLab  
+
+1. 设置全局账号
+
+```js
+git config --global user.name 'xxx'
+git config --global user.email 'xxx@curefun.com'
+```
+
+2. 如果两个使用的是同一个邮箱则使用它们分别生成两个不同类型的sshKey,我这里分别生成了ed25519和rsa格式的  
+相同类型,相同邮箱会把之前的覆盖掉
+
+```js
+// ed25519
+ssh-keygen -t ed25519 -C "your_email@example.com"
+
+// 公司生成rsa
+ssh-keygen -t rsa -b 2048 -C "<email>"
+```
+
+3. 将两个key存入ssh-agent
+
+```js
+ssh-add ~/.ssh/id_ed25519
+ssh-add ~/.ssh/id_rsa
+```
+
+4. 将对应的key分别添加到github和gitlab远程配置中
+
+5. 本地.ssh文件夹添加配置文件config
+
+```js
+Host github.com 
+    HostName ssh.github.com 
+    User jy381420074@163.com 
+    PreferredAuthentications publickey 
+    IdentityFile ~/.ssh/id_ed25519 
+    Port 443 
+
+Host git.ftling.com 
+    HostName 192.168.0.250 
+    User jy381420074@163.com 
+    IdentityFile ~/.ssh/id_rsa 
+    Port 10020 
+```
