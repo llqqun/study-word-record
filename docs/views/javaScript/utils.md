@@ -1,5 +1,36 @@
 # JS工具函数
 
+## 强制休眠,同步等待
+
+```js
+const sleep = async (t) => new Promise((resolve) => setTimeout(resolve, t));
+
+async function demo () {
+  console.log('开始')
+  await sleep(2000).then(() => console.log('等待了2秒'))
+  console.log('等待结束')
+}
+demo()
+```
+
+## cookie获取转换为对象
+
+```js
+const getCookie = () => document.cookie
+    .split(';')
+    .map((item) => item.split('='))
+    .reduce((acc, [k, v]) => (acc[k.trim().replace('"', '')] = v) && acc, {})
+```
+
+## 去除文本中的html标签
+
+DOMParser 可以将存储在字符串中的 XML 或 HTML 源代码解析为一个 DOM Document。
+
+```js
+const stripHtml = (html) => new DOMParser().parseFromString(html, 'text/html').body.textContent || '';
+stripHtml('<div>test</div>') // 'test'
+```
+
 ## File, Blob, ArrayBuffer 格式转换
 
 > file 转 ArrayBuffer
