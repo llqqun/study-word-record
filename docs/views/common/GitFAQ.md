@@ -1,9 +1,10 @@
 # GIT
+
 ## 本地合并远程设置远程为主分支
 
 ```
 git remote add origin [你的git远程地址]  // 关联远程仓库
-git push -u origin master	// 推送本地分支到远程仓库
+git push -u origin master // 推送本地分支到远程仓库
 git push --set-upstream origin master
 git add .
 git commit -m ''
@@ -14,12 +15,12 @@ git push
 
 | **命令**           | **功能**                                             | **格式**                                                     | **参数说明**                   | **使用实例**                                                 |
 | ------------------ | ---------------------------------------------------- | ------------------------------------------------------------ | ------------------------------ | ------------------------------------------------------------ |
-| ssh –keygen –t rsa | 生成密钥                                             | ssh –keygen –t rsa –C [email]                                | email：邮箱地址                | 在C盘.ssh文件夹下获取密钥文件“id_rsa.pub”ssh –keygen –t rsa –C "devcloud_key01@huawei.com" |
+| ssh –keygen –t rsa | 生成密钥                                             | ssh –keygen –t rsa –C [email]                                | email：邮箱地址                | 在C盘.ssh文件夹下获取密钥文件“id_rsa.pub”ssh –keygen –t rsa –C "<devcloud_key01@huawei.com>" |
 | git branch         | 新建分支。                                           | git branch [new branchname]                                  | new branchname：新的分支名     | 新建分支：git branch newbranch                               |
 | git branch –D      | 删除分支                                             | git branch –D [new branchname]                               | new branchname：新的分支名     | 删除本地分支：git branch –D newbranch删除服务器仓库分支git branch –rd origin/newbranch同步远端已删除的分支git remote prune origin |
 | git add            | 添加文件到暂存区。                                   | git add [filename]                                           | filename：文件名               | 添加一个文件到暂缓区：git add filename添加所有修改的和新增的文件到暂缓区：git add . |
 | git rm             | 删除本地目录或文件。                                 | git rm [filename]                                            | filename：文件名或目录名       | 删除文件：git rm filename                                    |
-| git clone          | 克隆远程仓库。                                       | git clone [VersionAddress]                                   | VersionAddress：版本库的网址。 | 克隆**jQuery**的版本库：git clone https://github.com/jquery/jquery.git该命令会在本地主机生成一个目录，与远程主机的版本库同名。 |
+| git clone          | 克隆远程仓库。                                       | git clone [VersionAddress]                                   | VersionAddress：版本库的网址。 | 克隆**jQuery**的版本库：git clone <https://github.com/jquery/jquery.git该命令会在本地主机生成一个目录，与远程主机的版本库同名。> |
 | git pull           | 把远程仓库的分支pull到本地，再与本地的指定分支合并。 | git pull [RemoteHostname] [RemoteBranchname]:[LocalBranchname] | -                              | 取回**“origin”**主机的**“next”**分支，与本地的**“master”**分支合并：git pull origin next:master |
 | git diff           | 文件、分支、目录或版本的比较。                       | git diff                                                     | -                              | 当前与**“master”**分支的比较：git diff master                |
 | git commit         | 文件提交。                                           | git commit                                                   | -                              | 添加提交信息：git commit –m "commit message"                 |

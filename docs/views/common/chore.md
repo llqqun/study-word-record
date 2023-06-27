@@ -158,3 +158,15 @@ pm2 start verdaccio
    > 配置失败注意  
    > 服务器的防火墙是否配置  
    > node 版本 16+
+
+## 浏览器http跳转https
+
+> chrome
+
+打开chrome://net-internals/#hsts
+
+左侧菜单Domain Security Policy
+
+右侧菜单Delete domain security policies
+
+输入要删除的域名,单击delete
