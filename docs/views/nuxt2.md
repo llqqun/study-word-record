@@ -6,7 +6,6 @@
 
 服务端渲染和客户端路由跳转都会触发
 
-
 属性配置
 
 fetchOnServer: 服务端渲染是否触发
@@ -99,3 +98,9 @@ export default {
 
 ## 引入第三方包es6语法未转换
 
+## 全局变量
+
+```js
+process.server // 判断是否为服务端
+process.client // 判断是否为客户端
+```
