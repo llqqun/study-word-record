@@ -743,7 +743,7 @@ setTimeout(obj2.foo, 100); // name: obj  软绑定了最初的obj
 
 ## 原型与原型链
 
-![Image](D:\codeWork\images\yx.jpg)
+![Image](/images/yx.jpg)
 
 构造函数 或者 class 通过实例化生成实例对象
 

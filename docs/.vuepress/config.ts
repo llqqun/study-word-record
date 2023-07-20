@@ -9,7 +9,7 @@ const __dirname = getDirname(import.meta.url)
 export default defineUserConfig({
   base: '/',
   lang: 'zh-CN',
-  title: '这是什么?',
+  title: 'Study Center',
   description: 'WEB笔记本',
   head: [['link', { rel: 'icon', href: '/favicon-32x32.png' }]],
   theme: defaultTheme({
