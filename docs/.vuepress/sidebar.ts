@@ -10,6 +10,7 @@ export default {
       text: "vue2",
       children: [
         "/views/vue2/baseIndex.md",
+        "/views/vue2/Source Code Interpretation.md",
         "/views/vue2/observation.md",
         "/views/vue2/vnode.md",
         "/views/vue2/template.md",
