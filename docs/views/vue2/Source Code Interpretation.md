@@ -124,7 +124,8 @@ if (options && options._isComponent) {
 接着调用初始化函数,进行生命周期的执行
 
 ```js
-initLifecycle(vm)
+    // 初始化生命周期
+    initLifecycle(vm)
     // 初始化事件
     initEvents(vm)
     // 初始化渲染
@@ -203,7 +204,7 @@ const options: ComponentOptions = {} as any
 
 最后返回对象options
 
-值得一提 `mergeField ` ，它不是简单的把属性从一个对象里复制到另外一个对象里，而是根据被合并的不同的选项有着不同的合并策略。例如，对于data有data的合并策略，即该文件中的strats.data函数；对于watch有watch的合并策略，即该文件中的strats.watch函数等等。这就是设计模式中非常典型的策略模式。
+值得一提 `mergeField ` ，它不是简单的把属性从一个对象里复制到另外一个对象里，而是根据被合并的不同的选项有着不同的合并策略。例如，对于data有data的合并策略，即该文件中的strats.data函数；对于watch有watch的合并策略，即该文件中的strats.watch函数; 对于生命周期和组件props合并策略采取mergeLifecycleHook函数,等等还有其他一些策略。这就是设计模式中非常典型的策略模式。
 
 ```js
   function mergeField(key: any) {
