@@ -4,7 +4,7 @@
 
 官方介绍文档[https://nuxtjs.org/docs/features/data-fetching/#listening-to-query-string-changes]
 
-服务端渲染和客户端路由跳转都会触发
+作为页面生命周期时服务端渲染和客户端路由跳转都会触发  
 
 属性配置
 

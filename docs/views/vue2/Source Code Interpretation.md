@@ -234,3 +234,40 @@ function mergeAssets(
   }
 }
 ```
+
+### callHook是如何触发生命钩子的
+
+先上源码, `callHook`的逻辑非常简单,核心思路就是拿到生命周期函数的数组,循环遍历执行
+
+```js
+export function callHook(
+  vm: Component,
+  hook: string,
+  args?: any[],
+  setContext = true
+) {
+  // #7573 disable dep collection when invoking lifecycle hooks
+  pushTarget()
+  const prev = currentInstance
+  setContext && setCurrentInstance(vm)
+  const handlers = vm.$options[hook]
+  const info = `${hook} hook`
+  if (handlers) {
+    for (let i = 0, j = handlers.length; i < j; i++) {
+      invokeWithErrorHandling(handlers[i], vm, args || null, vm, info)
+    }
+  }
+  if (vm._hasHookEvent) {
+    vm.$emit('hook:' + hook)
+  }
+  setContext && setCurrentInstance(prev)
+  popTarget()
+}
+```
+
+因为`mixins`,`extend`,等原因之前的属性合并时同名生命周期函数被放入一个数组中(这里的handlers是一个生命周期函数数组),然后通过循环的方式使用`invokeWithErrorHandling`调用  
+内部源码实现
+
+```js
+res = args ? handler.apply(context, args) : handler.call(context)
+```
