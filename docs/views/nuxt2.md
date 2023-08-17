@@ -104,3 +104,35 @@ export default {
 process.server // 判断是否为服务端
 process.client // 判断是否为客户端
 ```
+
+## 部署(linux + pm2)
+
+第一步 本地先build 项目生成dist文件
+
+第二步 将 `.nuxt`, static, nuxt.config.js, package.json 打包压缩成.zip包 上传到服务器指定文件夹
+
+第三步 解压.zip文件
+
+```cmd
+unzip nuxt.zip
+```
+
+第四步 安装包
+
+```cmd
+npm install
+```
+
+第五步 启动项目
+
+```cmd
+npm run start
+```
+
+至此项目在服务端就部署完成了
+
+通过pm2 部署项目
+
+```cmd
+pm2 start npm -- start
+```
