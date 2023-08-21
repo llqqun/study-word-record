@@ -31,12 +31,12 @@ docker rmi [镜像名称或者id]
 
 ```
 
-运行一个Nginx容器
+根据nginx镜像运行一个Nginx容器
 
 ```cmd
-docker run -d -p 5000:80 nginx2
+docker run -d -p 5000:80 nginx
 // or
-docker run --name nginx-docker-con  -d -p 5000:80 nginx2
+docker run --name nginx-docker-con  -d -p 5000:80 nginx
 ```
 
 部署外部路径 `/usr/local/dockerWork`到容器内
