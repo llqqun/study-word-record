@@ -46,3 +46,23 @@ uni.$on('change', (key) => {
   console.log(key)
 })
 ```
+
+## 微信小程序input组件type="nickname"获取微信昵称，v-model绑定值为空
+
+解决办法:
+
+> 注意  
+> vue3 setup中没有this,通过getCurrentInstance()获取当前实例  
+> 查询结果是异步的,放在同步代码中要进行同步处理
+
+```js
+uni.createSelectorQuery().in(this) // 注意这里要加上 in(this)  
+    .select("#id")  
+    .fields({  
+        properties: ["value"],  
+    })  
+    .exec((res) => {  
+        const nickName = res?.[0]?.value  
+        console.log('昵称', nickName)  
+    })
+```

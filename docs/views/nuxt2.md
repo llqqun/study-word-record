@@ -10,6 +10,30 @@
 
 fetchOnServer: 服务端渲染是否触发
 
+## servermiddleware 服务端中间件 实现重定向
+
+服务中间件[官方文档](https://v2.nuxt.com/docs/configuration-glossary/configuration-servermiddleware#the-servermiddleware-property)里有说明默认导出的是一个方法
+`function(req, res, next)`
+参数req和res都是nodejs中的类型
+
+```js
+// nuxt.config.js
+export default {
+  serverMiddleware: [
+    (req, res, next) => {
+      if (req.url === '/old-url') {
+        res.writeHead(301, {
+          Location: '/new-url'
+        })
+        res.end()
+      } else {
+        next()
+      }
+    }
+  ]
+}
+```
+
 ## svg 服务端渲染  
 
 ```js
