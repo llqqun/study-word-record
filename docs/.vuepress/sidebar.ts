@@ -19,6 +19,15 @@ export default {
       ],
     },
   ],
+  "/views/server/python": [
+    {
+      text: 'Python',
+      children: [
+          "/views/server/python/index.md",
+          "/views/server/python/var.md"
+      ]
+    }
+  ],
   "/views/javaScript/": [
     {
       text: "javaScript",

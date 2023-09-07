@@ -160,3 +160,33 @@ npm run start
 ```cmd
 pm2 start npm -- start
 ```
+
+## 服务中间件中拉取图片转换base64
+
+```js
+//serverMiddleware.js
+import axios from 'axios'
+
+async function getBase64 (url) {
+  return await axios.get(url, { responseType: 'arraybuffer' }).then((imgRes) => {
+    return new Buffer.from(imgRes.data, 'binary').toString('base64')
+  })
+}
+
+export default function (req, res, next) {
+  let requestData = ''
+  req.on('data', (data) => {
+      requestData += data
+    })
+    req.on('end', async () => {
+      requestData = JSON.parse(requestData)
+      const img64 = await getBase64(requestData.url)
+      
+        res.writeHead(200, {
+          'Content-Type': 'application/json'
+        })
+        res.end(JSON.stringify({ data: `data:image/png;base64,${img64}` }))
+          
+    })
+}
+```

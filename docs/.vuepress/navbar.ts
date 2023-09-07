@@ -15,7 +15,7 @@ export default [
   {
     text: "服务端",
     children: [
-      { text: "Python", link: "/views/server/python" }
+      { text: "Python", link: "/views/server/python/" }
     ]
   },
   { text: "面试", link: "/views/interview" },
