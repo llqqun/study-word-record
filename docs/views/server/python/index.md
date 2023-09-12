@@ -1,6 +1,6 @@
 ---
 lang: zh-CN
-title: Python
+title: 基本知识
 description: pyton 3+
 ---
 
@@ -143,6 +143,8 @@ s.append(4)
 
 `s.remove(x)` 删除 s 中第一个 s[i] 等于 x 的项目。
 
+`s.sort(key)` 列表排序函数
+
 ### 元组 tuple
 
 组中只包含一个元素时，需要在元素后面添加逗号 , ，否则括号会被当作运算符使用
@@ -261,4 +263,56 @@ print(2 ** 5)  # 32 乘方
 a = 10
 b = 20
 c = a if a > b else b
+```
+
+## 函数
+
+```python
+def fun ():
+    return '函数'
+print(fun())
+```
+
+### 默认参数
+
+```python
+def fun(a = 100, b = 200):
+    print(a, b)
+
+fun()
+
+```
+
+
+### 可变参数 *args
+加了星号 * 的参数会以元组(tuple)的形式导入，存放所有未命名的变量参数。
+```python
+
+def fun(*args):
+    print(args)
+fun(1,2)
+
+```
+
+加了两个星号 ** 的参数会以字典的形式导入。
+```python
+# 可写函数说明
+def printinfo( arg1, **vardict ):
+   "打印任何传入的参数"
+   print ("输出: ")
+   print (arg1)
+   print (vardict)
+ 
+# 调用printinfo 函数
+printinfo(1, a=2,b=3)
+```
+
+### 匿名函数 lambda
+
+```python
+# var = lambda: 100
+
+#var = lambda a, b: a + b
+#var(1, 2)
+
 ```
