@@ -1,4 +1,12 @@
-# 响应式
+# 响应式系统
+
+> 什么事数据驱动?
+
+UI = render(state)
+
+数据状态输入, 输出UI页面. 当数据状态改变,则页面跟着改变
+
+> vue是怎么实现监视数据状态变化的?
 
 vue2通过js的API`Object.defineProperty`实现数据侦测
 
