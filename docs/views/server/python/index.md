@@ -316,3 +316,23 @@ printinfo(1, a=2,b=3)
 #var(1, 2)
 
 ```
+
+## 文件操作
+
+Python `open()` 方法用于打开一个文件，并返回文件对象。
+
+open() 函数常用形式是接收两个参数：文件名(file)和模式(mode)。
+
+```python
+open(file, mode='r')
+# 完整参数
+#open(file, mode='r', buffering=-1, encoding=None, errors=None, newline=None, closefd=True, opener=None)
+#file: 必需，文件路径（相对或者绝对路径）。
+#mode: 可选，文件打开模式
+#buffering: 设置缓冲
+#encoding: 一般使用utf8
+#errors: 报错级别
+#newline: 区分换行符
+#closefd: 传入的file参数类型
+#opener: 设置自定义开启器，开启器的返回值必须是一个打开的文件描述符。
+```
