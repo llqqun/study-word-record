@@ -52,8 +52,21 @@ docker cp 797c652d907e:/etc/nginx/nginx.conf /usr/local/nginx/conf/nginx.conf
 // 容器id:内部路径 外部文件
 ```
 
+查找指定容器
+
+```doc
+// 先查找所有容器
+// 然后通过linux命令grep 过滤
+docker ps | grep [过滤参数]
+
+```
+
 查看容器日志
 
 ```cmd
+// 查看所有日志
 docker logs -f [容器ID或者容器名称]
+
+// 添加过滤条件
+docker logs -f[容器ID或者容器名称] --tail=10
 ```
