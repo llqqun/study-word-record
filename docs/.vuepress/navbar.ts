@@ -3,6 +3,7 @@ export default [
   {
     text: "前端",
     children: [
+      { text: "WebPack", link: "/views/webpack/5" },
       { text: "TypeScript", link: "/views/ts-work" },
       { text: "javaScript", link: "/views/javaScript/baseIndex" },
       { text: "vue2", link: "/views/vue2/baseIndex" },

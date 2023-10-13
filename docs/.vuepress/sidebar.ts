@@ -65,4 +65,10 @@ export default {
       children: ["/views/tinymce/introduce.md"],
     },
   ],
+  "/views/webpack/": [
+    {
+      text: "webpack",
+      children: ["/views/webpack/5.md", "/views/webpack/4.md"]
+    },
+  ],
 };
