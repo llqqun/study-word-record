@@ -1,9 +1,10 @@
+# 工具
 
 ## tree-cli 目录输出工具
 
 安装 npm install -g tree-cli 或者 yarn add global tree-cli  
 
-```
+```cmd
 --help, -h 输出用法信息
   --version 输出版本号
   --debug debug信息

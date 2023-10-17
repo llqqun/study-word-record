@@ -71,4 +71,18 @@ export default {
       children: ["/views/webpack/5.md", "/views/webpack/4.md"]
     },
   ],
+  "/views/tool/": [
+    {
+      text: "TOOL",
+      children: ["/views/tool/webstorm.md",
+      "/views/tool/videojs.md",
+      "/views/tool/uniapp.md",
+      "/views/tool/tool.md",
+      "/views/tool/package.md",
+      "/views/tool/nginx.md",
+      "/views/tool/git.md",
+      "/views/tool/docker.md",
+    ]
+    },
+  ],
 };

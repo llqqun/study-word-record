@@ -2,7 +2,7 @@
 
 ## 本地合并远程设置远程为主分支
 
-```
+```cmd
 git remote add origin [你的git远程地址]  // 关联远程仓库
 git push -u origin master // 推送本地分支到远程仓库
 git push --set-upstream origin master

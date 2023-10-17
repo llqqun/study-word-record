@@ -1,4 +1,6 @@
-# debugger 调试html 失败
+# webstorm
+
+## debugger 调试html 失败
 
 单击右键小甲虫Debugger HTML 页面时chrome打开空白页
 
@@ -15,3 +17,7 @@
 打开 tool -> Web Browsers and Preview
 
 编辑打开的浏览器,添加命令行选项`--remote-allow-origins=*`, 应用保存,重新debug
+
+## nuxt2 Debug服务端调试配置
+
+[图片](/images/webstome-1.png)

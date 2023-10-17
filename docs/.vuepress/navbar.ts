@@ -10,7 +10,8 @@ export default [
       { text: "vue3", link: "/views/vue3/baseIndex" },
       { text: "css", link: "/views/css/cssFAQ" },
       { text: "tinymceAPI", link: "/views/tinymce/introduce" },
-      { text: "杂谈", link: "/views/common/chore" },
+      { text: "tool", link: "/views/tool/tool" },
+      { text: "乱七八糟", link: "/views/common/chore" },
     ],
   },
   {
