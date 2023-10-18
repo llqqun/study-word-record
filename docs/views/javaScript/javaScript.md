@@ -1,4 +1,4 @@
-# javaScript 学习
+# javaScript 记录
 
 本笔记仅只是本人自学记录所写, 不适合零基础小白阅读
 自学网站推荐
@@ -899,7 +899,9 @@ pointer-events: none;
 //值none表示鼠标事件“穿透”该元素并且指定该元素“下面”的任何东西。
 ```
 
-### textarea 高度自适应
+### textarea
+
+高度适应解决方案
 
 ```css
 textarea {
@@ -919,6 +921,34 @@ let textList = Array.from(document.getElementsByTagName('textarea'));
       el.style.height = `${el.scrollHeight}px`;
     });
   });
+```
+
+修改enter为发送,ctrl + enter 为换行
+
+```vue
+<el-input
+  v-model="inputContent"
+  type="textarea"
+  :autosize="{ minRows: 2, maxRows: 4}"
+  placeholder="请输入内容"
+  @keydown.native.enter="handledTextarea"
+>
+```
+
+```js
+handledTextarea (e) {
+      e.preventDefault()
+      if (e.keyCode === 13) {
+        // 判断ctrl 是否按下
+        if (e.ctrlKey) {
+          console.log('换行')
+          this.inputContent += '\n'
+        } else {
+          console.log('发送')
+          this.subMit()
+        }
+      }
+    }
 ```
 
 ### Data URL 注意
