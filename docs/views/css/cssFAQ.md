@@ -280,6 +280,12 @@ aspect-ratio
 
 ## 文本操作
 
+### 文字两端对齐
+
+```css
+text-align-last: justify;
+```
+
 ### textarea 高度自适应
 
 ```css
