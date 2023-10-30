@@ -32,7 +32,8 @@ export default {
     {
       text: "javaScript",
       children: [
-        "/views/javaScript/baseIndex.md",
+        "/views/javaScript/eventLoop.md",
+        "/views/javaScript/browserRender.md",
         "/views/javaScript/svg.md",
         "/views/javaScript/Promise.md",
         "/views/javaScript/javaScript.md",
