@@ -52,14 +52,29 @@ const fileCach = new File([blobData], '测试文件.docx', { type: 'application/
 
 ## 文件下载
 
-> a标签下载通用下载
+> a标签下载
 
 ```js
-          const ele = document.createElement('a')
-          ele.href = filePath
-          const fileType = item.content.slice(filePath.lastIndexOf('.'))
-          ele.download = '文件名称' + fileType
-          ele.click()
+let ele = document.getElementById('postmessage_2079592')
+let imgarr = Array.from(ele.querySelectorAll('img'))
+imgarr.forEach(async (item,index) => {
+    if(index !== 0) {
+  let response = await fetch(item.src) // 内容转变成blob地址
+  let blob = await response.blob() // 创建隐藏的可下载链接
+  let objectUrl = window.URL.createObjectURL(blob)
+  let type = item.src.substring(item.src.lastIndexOf('.'))
+ // 延时下载 浏览器下载并发时通过延时解决
+        setTimeout(() => {
+            let a = document.createElement('a');
+            a.href = objectUrl;
+            a.innerText=index
+            a.download= item.id+type;
+            a.target = '_blank';
+            a.click();
+            a.remove()
+        }, 1000 * index)
+    }
+})
 ```
 
 > blob下载(使用axios工具)
@@ -820,33 +835,6 @@ function onUpload (e) {
     xhr.open("post", url, true)
     xhr.send(form);
 }
-```
-
-## js下载
-
-```javascript
-let ele = document.getElementById('postmessage_2079592')
-let imgarr = Array.from(ele.querySelectorAll('img'))
-imgarr.forEach(async (item,index) => {
-    if(index !== 0) {
-  let response = await fetch(item.src) // 内容转变成blob地址
-  let blob = await response.blob() // 创建隐藏的可下载链接
-  let objectUrl = window.URL.createObjectURL(blob)
-  let type = item.src.substring(item.src.lastIndexOf('.'))
- // 延时下载 浏览器下载并发时通过延时解决
-        setTimeout(() => {
-            let a = document.createElement('a');
-            console.log(index, objectUrl)
-            a.href = objectUrl;
-            a.innerText=index
-            a.download= item.id+type;
-            a.target = '_blank';
-            a.click();
-            a.remove()
-        }, 1000 * index)
-    }
-})
-
 ```
 
 ## dom转图片
