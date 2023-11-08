@@ -80,3 +80,24 @@ Host git.ftling.com
     IdentityFile ~/.ssh/id_rsa 
     Port 10020 
 ```
+
+## 推送现有文件夹
+
+```cmd
+cd existing_folder
+git init --initial-branch=main
+git remote add origin ssh://git@git.ftling.com:10020/mediation/ft-mediate-client.git
+git add .
+git commit -m "Initial commit"
+git push -u origin main
+```
+
+## 推送现有的 Git 仓库
+
+```cmd
+cd existing_repo
+git remote rename origin old-origin
+git remote add origin ssh://git@git.ftling.com:10020/mediation/ft-mediate-client.git
+git push -u origin --all
+git push -u origin --tags
+```
