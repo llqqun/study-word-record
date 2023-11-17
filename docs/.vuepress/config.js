@@ -1,10 +1,12 @@
 import { defineUserConfig, defaultTheme } from 'vuepress'
 import { viteBundler } from '@vuepress/bundler-vite'
 import { getDirname, path } from '@vuepress/utils'
+import { searchPlugin } from '@vuepress/plugin-search'
 import navbar from './navbar'
 import sidebar from './sidebar'
 // @ts-ignore
 const __dirname = getDirname(import.meta.url)
+
 
 export default defineUserConfig({
   base: '/',
@@ -21,4 +23,8 @@ export default defineUserConfig({
   bundler: viteBundler({
     viteOptions: {},
   }),
+  plugins: [
+    searchPlugin({
+    })
+  ]
 })
