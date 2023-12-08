@@ -19,6 +19,9 @@ export default {
       ],
     },
   ],
+  "/views/miniProject": [
+    { text: "小程序", children: ["/views/miniProject/wx.md"] }
+  ],
   "/views/server/python": [
     {
       text: 'Python',

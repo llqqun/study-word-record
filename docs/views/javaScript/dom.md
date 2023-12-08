@@ -23,3 +23,16 @@ var insertedNode = parentNode.insertBefore(newNode, referenceNode);
 ### getBoundingClientRect()  获取元素相对窗口的位置信息及元素本身宽高
 
 Element.getBoundingClientRect() 方法返回一个 DOMRect 对象，其提供了元素的大小及其相对于视口的位置。
+
+### 控制用户选择行为--selectstart 事件
+
+控制用户选择文本的行为
+
+```js
+// 禁止用户选择页面内的任一内容
+document.onselectstart = function() {
+    console.log(event)
+	if (event.srcElement.type != "text" && event.srcElement.type != "textarea" && event.srcElement.type != "password") return false;
+	else return true;
+};
+```

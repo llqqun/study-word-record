@@ -6,6 +6,7 @@ export default [
       { text: "WebPack", link: "/views/webpack/5" },
       { text: "TypeScript", link: "/views/ts-work" },
       { text: "js + html + css", link: "/views/javaScript/javaScript" },
+      { text: "小程序", link: "/views/miniProject/wx" },
       { text: "vue2", link: "/views/vue2/baseIndex" },
       { text: "vue3", link: "/views/vue3/baseIndex" },
       { text: "css", link: "/views/css/cssFAQ" },
