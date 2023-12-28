@@ -66,3 +66,27 @@ uni.createSelectorQuery().in(this) // 注意这里要加上 in(this)
         console.log('昵称', nickName)  
     })
 ```
+
+## scss添加全局变量样式文件
+
+新建var.scss全局样式文件
+
+```scss
+$cyan: #4BBCA1;
+$blue: #2373FF;
+```
+
+> 注意app.vue中引入的样式文件样式作用于全局,但是并不会在编译的时候替换开发中声明的变量
+> 找到根目录下的uni.scss文件,在其中添加全局变量, 这样在编译的时候才会自动替换对应变量
+
+```scss
+@import './var.scss';
+```
+
+> 注意: 全局变量在app.vue中引入的样式文件中使用时,需要使用$符号,如:
+
+```scss
+.test {
+  color: $cyan;
+}
+```
