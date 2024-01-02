@@ -87,6 +87,7 @@ export default {
       "/views/tool/nginx.md",
       "/views/tool/git.md",
       "/views/tool/docker.md",
+      "/views/tool/NavicatPremium.md",
     ]
     },
   ],
