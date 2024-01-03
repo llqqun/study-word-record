@@ -4,3 +4,4 @@ docs/.vuepress/.temp
 docs/.vuepress/dist
 node_modules
 .idea/*
+.vscode/*
