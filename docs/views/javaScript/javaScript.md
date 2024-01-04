@@ -1,3 +1,6 @@
+---
+title: javaScript
+---
 # javaScript 记录
 
 本笔记仅只是本人自学记录所写, 不适合零基础小白阅读
@@ -648,27 +651,6 @@ console.log(4);
 // 3
 ```
 
-async 声明的函数的返回值是一个 Promise 对象(根据函数内部 return 的结果进行包装),所以返回值可以进行 then 操作
-
-#### FAQ
-
-await 后面语句返回的 Promise 处于 pending 状态,所以其后的同步代码不会执行
-
-```JS
-async function async1 () {
-  console.log('async1 start');
-  await new Promise(resolve => {
-    console.log('promise1')
-  })
-  console.log('async1 success');
-  return 'async1 end'
-}
-console.log('srcipt start')
-async1().then(res => console.log(res))
-console.log('srcipt end')
-
-```
-
 ### 正则表达式
 
 ```javascript
@@ -864,123 +846,6 @@ bar(10); // 2、进入bar函数上下文环境
 
 workers 和主线程间的数据传递通过使用 postMessage() 方法发送各自的消息，使用 onmessage 事件处理函数来响应消息（消息被包含在`Message`事件的 data 属性中）。这个过程中数据并不是被共享而是被复制。
 
-## FAQ
-
-### vite 图片资源处理
-
-1.项目引入本地图片通过 new URL(url, import.meta.url)方式
-
-```javascript
-// 打包后资源会找不到
-function getImageUrl(url) {
-  return new URL(url, import.meta.url).href;
-}
-// 官方声明这里的url必须是静态的才能打包后正常使用
-```
-
-2. 直接将资源放入 public 目录内,直接使用/开头绝对路径
-3. 通过 import 引入图片后再使用
-
-### HTML 实体编码
-
-- 不可分的空格:＆nbsp;
-- <(小于符号):＆lt;
-- (大于符号):＆gt;
-- ＆(与符号):＆amp;
-- ″(双引号):＆quot;
-- '(单引号):'＆apos;
-
-### 子元素 click 事件为什么不执行
-
-<https://codepen.io/lancelovejava/pen/dymVZYN>
-
-```javascript
-pointer-events: none;
-//值none表示鼠标事件“穿透”该元素并且指定该元素“下面”的任何东西。
-```
-
-### textarea
-
-高度适应解决方案
-
-```css
-textarea {
-  width: 100%;
-  height: 80px;
-  overflow: hidden;
-  border: none;
-  resize: none;
-}
-```
-
-```js
-let textList = Array.from(document.getElementsByTagName('textarea'));
-  textList.forEach((ele) => {
-    ele.addEventListener('input', (e) => {
-      let el = e.target as HTMLElement;
-      el.style.height = `${el.scrollHeight}px`;
-    });
-  });
-```
-
-修改enter为发送,ctrl + enter 为换行
-
-```vue
-<el-input
-  v-model="inputContent"
-  type="textarea"
-  :autosize="{ minRows: 2, maxRows: 4}"
-  placeholder="请输入内容"
-  @keydown.native.enter="handledTextarea"
->
-```
-
-```js
-handledTextarea (e) {
-      e.preventDefault()
-      if (e.keyCode === 13) {
-        // 判断ctrl 是否按下
-        if (e.ctrlKey) {
-          console.log('换行')
-          this.inputContent += '\n'
-        } else {
-          console.log('发送')
-          this.subMit()
-        }
-      }
-    }
-```
-
-### Data URL 注意
-
-使用 Data URL 也有一些缺点：
-
-- base64 编码后的图片会比原来的体积大三分之一左右。
-- Data URL 形式的图片不会缓存下来，每次访问页面都要被下载一次。可以将 Data URL 写入到 CSS 文件中随着 CSS 被缓存下来。
-
-Data URL 是前缀为`data:`协议的 URL； 它允许内容创建者向文档中嵌入小文件，比如图片等。 Data URL 由四部分组成：
-
-- 前缀`data:`
-- 指示数据类型的 MIME 类型。例如`image/jpeg`表示 JPEG 图像文件；如果此部分被省略，则默认值为`text/plain;charset=US-SACII`
-- 如果为非文本数据，则可选 base64 做标记
-- 数据
-
-### JSON 中 stringify 输出注意
-
-```
-const obj = {
-  a: 3,
-  b: 4,
-  c: null,
-  d: undefined,
-  get e() {},
-};
-console.log(JSON.stringify(obj));
-// {"a":3,"b":4,"c":null,"e":111}
-```
-
-stringify 函数处理对象时,值是 undefined 的 key 被抛弃,get e() 未有返回值所以是 undefined
-
 ## 跨域
 
 **协议**，**域名**，**端口**，三者有一不一样，就是跨域
@@ -1054,9 +919,8 @@ Object.getPrototypeOf()
 Object.defineProperty()
 ```
 
-## ES6 学习
 
-### let 和 const
+## let 和 const
 
 let,const
 
@@ -1068,9 +932,8 @@ let,const
 
 ES6 声明变量的六种方法: var let const import function class
 
-### 解构赋值
 
-#### 函数解构赋值
+## 函数解构赋值
 
 ```javascript
 function add([x, y]) {
@@ -1080,7 +943,7 @@ function add([x, y]) {
 add([1, 2]); // 3
 ```
 
-#### 数组解构赋值
+## 数组解构赋值
 
 ```javascript
 // 数组 模式匹配
@@ -1106,236 +969,7 @@ let [foo] = {};
 //因为等号右边的值，要么转为对象以后不具备 Iterator 接口（前五个表达式），要么本身就不具备 Iterator 接口（最后一个表达式）
 ```
 
-### 类 class
-
-```javascript
-let methodName = "getArea";
-class demo1 {
-  // 私有属性, 只能类内部用
-  static #count = 0;
-  name = "";
-  static {
-    console.log("类的静态块,类生成时运行,只运行一次");
-
-    console.log(this === demo1);
-  }
-  constructor() {
-    if (new.target !== undefined) {
-      this.name = name;
-    } else {
-      throw new Error("必须使用 new 命令生成实例");
-    }
-    console.log(demo1.#count);
-  }
-  [methodName]() {
-    console.log("属性表达式");
-  }
-  static greed() {
-    console.log("静态方法");
-  }
-  red() {
-    console.log("非静态方法");
-  }
-  #red() {
-    console.log("私有方法");
-  }
-  showPrivate() {
-    console.log(this.#xp);
-    this.#xp = 1;
-    console.log(this.#xp);
-  }
-  get name() {
-    return this.name;
-  }
-  set name(param) {
-    this.name = param;
-  }
-  get #xp() {
-    return demo1.#count;
-  }
-  set #xp(param) {
-    demo1.#xp = param;
-  }
-}
-class demo2 extends demo1 {
-  static age = 0; // 静态属性
-  constructor() {
-    super();
-  }
-  static demoEven() {
-    console.log("调用父类静态方法");
-    super.greed();
-  }
-}
-const testClass = class demo3 {
-  constructor() {
-    demo3.name = 1;
-  }
-};
-```
-
-## VUE2
-
-### [响应式原理](https://v2.cn.vuejs.org/v2/guide/reactivity.html)
-
-核心思路:
-
-- 对象: 通过[defineProperty](https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/defineProperty),将传入 vue 的普通 js 对象,的已有属性转换成 get/set 进行劫持(监视/拦截)
-
-- 数组: 通过重写数组更新数组一系列更新元素的方法来实现元素修改的劫持
-
-由于 JavaScript 的限制，Vue **不能检测**数组和对象的变化
-
-(可以监视通过数组函数修改的数组变化,但是不能监视数组的索引操作的变化,也不检测数组长度变化)
-
-可以监视对象初始属性的变化,对象后期添加/删除的属性变化检测不到
-
-可以使用 set(object, propertyName, value) 方法向嵌套对象添加响应式 property
-
-```js
-Vue.set(vm.someObject, "b", 2);
-```
-
-由于 Vue 不允许动态添加根级响应式 property，所以你必须在初始化实例前声明所有根级响应式 property，哪怕只是一个空值
-
-```js
-var vm = new Vue({
-  data: {
-    // 声明 message 为一个空值字符串
-    message: "",
-  },
-  template: "<div>{{ message }}</div>",
-});
-// 之后设置 `message`
-vm.message = "Hello!";
-```
-
-## Vue3
-
-### 响应式原理
-
-基于 vue2 响应式存在的缺陷:
-
-- 对象属性的添加删除
-- 数组元素索引操作/数组.length 操作
-- Map,Set,WeakMap 和 WeakSet 数据类型的支持
-
-vue3 响应式基于 proxy 实现
-
-```js
-function reactive(obj) {
-  return new Proxy(obj, {
-    get(targ, key) {
-      track(target, key);
-      return Reflect.get(targ, key);
-    },
-    set(targ, key, value) {
-      target[key] = value;
-      return Reflect.set(targ, key, value);
-    },
-    delect(targ, key) {
-      return Reflect.delectProperty(targ, key);
-    },
-  });
-}
-function ref(value) {
-  const refObject = {
-    get value() {
-      track(refObject, "value");
-      return value;
-    },
-    set value(newValue) {
-      value = newValue;
-      trigger(refObject, "value");
-    },
-  };
-  return refObject;
-}
-```
-
-watchEffect 的实现,同理 computer 也是一样
-
-```js
-const effectStack = []; // 缓存响应式任务
-const targetMap = new WeakMap(); // 响应式关系映射表WeakMap<target, Map<key, Set<effect>>>
-// 依赖收集
-function track(target, key) {
-  // 获取响应式函数
-  const effect = effectStack[effectStack.length - 1];
-  // console.log(effect);
-  if (effect) {
-    // 获取 target 映射关系 map，不存在则创建
-    let depMap = targetMap.get(target);
-    if (!depMap) {
-      depMap = new Map();
-      targetMap.set(target, depMap);
-    }
-    // 获取 key 对应依赖集合，不存在则创建
-    let deps = depMap.get(key);
-    if (!deps) {
-      deps = new Set();
-      depMap.set(key, deps);
-    }
-    // 将响应函数添加到依赖集合
-    deps.add(effect);
-  }
-}
-// 执行effectStack中的任务
-function trigger(target, key) {
-  const effects = getSubscribersForProperty(target, key);
-  effects.forEach((effect) => effect());
-}
-//
-function effect(fn, options = {}) {
-  // 创建 reactiveEffect
-  const effectRun = createReactiveEffect(fn, options);
-  // 执行一次触发依赖收集
-  effectRun();
-  return effectRun;
-}
-function createReactiveEffect(fn, options) {
-  // 封装一个高阶函数，除了执行fn，还要将自己放入 effectStack 为依赖收集做准备
-  const effect = function reactiveEffect(...args) {
-    if (!effectStack.includes(effect)) {
-      try {
-        // 1、effect入栈
-        effectStack.push(effect);
-        // 2、执行fn
-        return fn(...args);
-      } finally {
-        // 3、effect出栈
-        effectStack.pop();
-      }
-    }
-  };
-  return effect;
-}
-function computed(fn) {
-  // 创建一个特殊的 effect：
-  // 这个effect创建时不会立刻执行，且会在其他effect后面执行
-  const runner = effect(fn, {
-    computed: true,
-    lazy: true,
-  });
-  // 返回一个对象包含响应函数和最新值的getter
-  // 这样computed首次获取值时才收集依赖
-  return {
-    effect: runner,
-    get value() {
-      return runner();
-    },
-  };
-}
-// 1.先运行watchEffect内部函数
-// 2. 函数内部调用effect
-// 3. 执行参数函数进行依赖收集,建立响应式映射关系
-watchEffect(() => {
-  // 追踪 A0 和 A1
-  A2.value = A0.value + A1.value;
-});
-```
-
-### [模板引用](https://cn.vuejs.org/guide/essentials/template-refs.html#accessing-the-refs)
+## [模板引用](https://cn.vuejs.org/guide/essentials/template-refs.html#accessing-the-refs)
 
 ref 属性: 获取 dom 元素或者子组件实例的模板引用,只有在组件挂载后才能使用
 

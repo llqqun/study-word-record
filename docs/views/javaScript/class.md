@@ -1,3 +1,9 @@
+---
+title: js中的类
+---
+
+# JavaScript中的类
+
 ```js
 class People {
     // name; 这种显示声明会和set/get 语法绑定冲突
