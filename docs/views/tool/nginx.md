@@ -13,7 +13,7 @@
 - nginx -c：设置配置文件
 - nginx -g：附加配置文件路径
 
-```js
+```cmd
 nginx -s stop // 立即停止
 nginx -s reload // 重启服务
 ```

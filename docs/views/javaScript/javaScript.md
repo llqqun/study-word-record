@@ -1005,4 +1005,19 @@ defineExpose({
 </script>
 ```
 
-## React
+## 循环迭代中执行异步操作并且同步获取数据
+
+```js
+const arr = [1, 2, 3];
+const res = Promise.all(arr.map((item) => {
+  return new Promise((resolve) => {
+    setTimeout(() => {
+      resolve(item);
+    }, 1000);
+  });
+}));
+res.then((val) => {
+    console.log(val);
+})
+```
+
