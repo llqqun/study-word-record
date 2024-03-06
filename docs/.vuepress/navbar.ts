@@ -11,7 +11,6 @@ export default [
       { text: "vue3", link: "/views/vue3/baseIndex" },
       { text: "css", link: "/views/css/cssFAQ" },
       { text: "tinymceAPI", link: "/views/tinymce/introduce" },
-      { text: "tool", link: "/views/tool/tool" },
       { text: "乱七八糟", link: "/views/common/chore" },
     ],
   },
@@ -19,6 +18,13 @@ export default [
     text: "服务端",
     children: [
       { text: "Python", link: "/views/server/python/" }
+    ]
+  },
+  {
+    text: "杂项",
+    children: [
+      { text: "win电脑", link: "/views/tool/window" },
+      { text: "tool", link: "/views/tool/tool" },
     ]
   },
   { text: "面试", link: "/views/interview" },

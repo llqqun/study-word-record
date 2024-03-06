@@ -90,6 +90,7 @@ export default {
       "/views/tool/git.md",
       "/views/tool/docker.md",
       "/views/tool/NavicatPremium.md",
+      "/views/tool/window.md",
     ]
     },
   ],
