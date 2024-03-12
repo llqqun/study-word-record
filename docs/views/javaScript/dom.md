@@ -36,3 +36,10 @@ document.onselectstart = function() {
 	else return true;
 };
 ```
+
+## 元素滚动操作
+
+### API: ele.scrollIntoView()
+
+滚动元素的父容器，使被调用 scrollIntoView() 的元素对用户可见。
+

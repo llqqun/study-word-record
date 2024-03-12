@@ -27,3 +27,27 @@ tasklist|findstr "9088"
 ```cmd
 taskkill /T /F /PID 9088 
 ```
+
+## BAT 批处理命令
+
+### 重命名文件夹内文件
+
+```bat
+
+@echo off
+setlocal EnableDelayedExpansion
+
+rem
+set /a count=0
+
+for /f "delims=" %%f in ('dir /b/od *.*') do (
+  if not "%%f"=="%~nx0" (
+           set /a b+=1 
+           ren "%%f" "!b!%%~xf"
+           echo. !b!%%~xf
+)
+)
+
+pause
+
+```
