@@ -65,6 +65,10 @@ export default {
       text: "css记录",
       children: ["/views/css/cssFAQ.md"],
     },
+    {
+      text: "SASS",
+      children: ["/views/css/sass.md"],
+    },
   ],
   "/views/tinymce/": [
     {

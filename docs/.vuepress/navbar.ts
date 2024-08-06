@@ -9,7 +9,7 @@ export default [
       { text: "小程序", link: "/views/miniProject/wx" },
       { text: "vue2", link: "/views/vue2/baseIndex" },
       { text: "vue3", link: "/views/vue3/baseIndex" },
-      { text: "css", link: "/views/css/cssFAQ" },
+      { text: "style", link: "/views/css/cssFAQ" },
       { text: "tinymceAPI", link: "/views/tinymce/introduce" },
       { text: "乱七八糟", link: "/views/common/chore" },
     ],
