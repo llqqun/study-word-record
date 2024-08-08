@@ -25,7 +25,7 @@
 
 ### 解决 iOS 滚动条被卡住的问题
 
-```javascript
+```css
 body,html{
   -webkit-overflow-scrolling: touch;
 }
@@ -40,17 +40,21 @@ body,html{
 ```
 
 ```css
+{
 // 对应的元素上添加下面样式
- padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
-padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+padding-bottom: constant(safe-area-inset-bottom); /*兼容 IOS<11.2*/
+    padding-bottom: env(safe-area-inset-bottom); /*兼容 IOS>11.2*/
+}
 ```
 
 ### 图片拖拽
 
 默认浏览器图片是能拖拽的添加下面设置禁止拖拽
 
-```javascript
--webkit-user-drag: none;
+```css
+{
+    -webkit-user-drag: none;
+}
 ```
 
 ### `nth-child` 和 `nt-of-type` 的区别
@@ -106,7 +110,7 @@ E:nth-of-type(n) => 先从兄弟元素中匹配 E 类型的元素,然后根据 n
 
 ### 画小箭头
 
-```javascript
+```css
 .box {
   padding: 15px;
   background-color: #ffffff;
@@ -184,30 +188,34 @@ writing-mode 属性定义了文本水平或垂直排布以及在块级元素中�
 
 此属性指定块流动方向，即块级容器堆叠的方向，以及行内内容在块级容器中的流动方向。因此，它也确定块级内容的顺序
 
-```javascript
+```css
+{
 /* 关键值 */
-writing-mode: horizontal-tb;
-writing-mode: vertical-rl;
-writing-mode: vertical-lr;
+    writing-mode: horizontal-tb;
+    writing-mode: vertical-rl;
+    writing-mode: vertical-lr;
 
 /* 全局值 */
-writing-mode: inherit;
-writing-mode: initial;
-writing-mode: unset;
+    writing-mode: inherit;
+    writing-mode: initial;
+    writing-mode: unset;
+}
 ```
 
 通过 flex 布局
 
-```javascript
-display: flex
-flex-flow: column wrap;
+```css
+ {
+    display: flex;
+    flex-flow: column wrap;
+}
 ```
 
 ### input 标签
 
 删除 `type="number"` 末尾的箭头
 
-```javascript
+```css
 .no-arrow::-webkit-outer-spin-button,
 .no-arrow::-webkit-inner-spin-button {
   -webkit-appearance: none;
@@ -216,13 +224,15 @@ flex-flow: column wrap;
 
 使用 `caret-color` 来修改光标的颜色
 
-```javascript
-caret-color: #ffd476;
+```css
+{
+    caret-color: #ffd476;
+}
 ```
 
 修改 input placeholder 样式
 
-```javascript
+```css
 input::-webkit-input-placeholder {
   color: #babbc1;
   font-size: 12px;
@@ -231,22 +241,25 @@ input::-webkit-input-placeholder {
 
 `outline:none` 删除输入状态线
 
-```javascript
-outline: none;
+```css
+{
+    outline: none;
+}
 ```
 
 input 自动填充颜色设置
 
-```javascript
-// 设置透明度
-  input:-internal-autofill-previewed,
-    input:-internal-autofill-selected {
-        -webkit-text-fill-color: #807c7c;
-        transition: background-color 5000s ease-out 0.5s;
-    }
+```css
 
-// 通过动画延迟
-input:-webkit-autofill,
+/* 设置透明度 */
+input:-internal-autofill-previewed,
+input:-internal-autofill-selected {
+    -webkit-text-fill-color: #807c7c;
+    transition: background-color 5000s ease-out 0.5s;
+}
+
+/* 通过动画延迟 */
+    input:-webkit-autofill,
     input:-webkit-autofill:hover,
     input:-webkit-autofill:focus,
     input:-webkit-autofill:active {
@@ -264,7 +277,8 @@ aspect-ratio
 
 ### 滚动条设置::-webkit-scrollbar( webkit 的浏览器)
 
-```javascript
+```css
+ {
 ::-webkit-scrollbar    //滚动条整体部分
 ::-webkit-scrollbar-button   //滚动条两端的按钮
 ::-webkit-scrollbar-track   // 外层轨道
@@ -273,9 +287,12 @@ aspect-ratio
 ::-webkit-scrollbar-corner   //边角
 ::-webkit-resizer   ///定义右下角拖动块的样式
 
-.box-hide-scrollbar::-webkit-scrollbar {
-  display: none; /* Chrome Safari */
+
 }
+.box-hide-scrollbar::-webkit-scrollbar {
+    display: none; /* Chrome Safari */
+}
+
 ```
 
 ## 文本操作
@@ -283,7 +300,9 @@ aspect-ratio
 ### 文字两端对齐
 
 ```css
-text-align-last: justify;
+{
+    text-align-last: justify;
+}
 ```
 
 ### textarea 高度自适应
@@ -295,18 +314,22 @@ text-align-last: justify;
 ### 优先使用系统字体
 
 ```css
-font-family: system-ui;
+{
+    font-family: system-ui;
+}
 ```
 
 ### 不允许选择文本
 
-```javascript
-user-select: none;
+```css
+{
+    user-select: none;
+}
 ```
 
 ### 自定义选定的文本样式
 
-```javascript
+```css
 ::selection {
   color: #ffffff;
   background-color: #ff4c9f;
@@ -328,17 +351,19 @@ text-overflow: ellipsis;
 
 **有较大兼容性问题**，适合于 webKit 浏览器或移动端（移动端大部分是 webkit 内核）
 
-```javascript
-/*1.超出的部分隐藏 */
-overflow: hidden;
-/*2. 文字用省略号替代超出的部分 */
-text-overflow: ellipsis;
-/* 3. 弹性伸缩盒子模型显示 */
-display: -webkit-box;
-/* 4. 限制在一个块元素显示的文本的行数 */
--webkit-line-clamp: 2;
-/* 5. 设置或检索伸缩盒对象的子元素的排列方式 */
--webkit-box-orient: vertical;
+```css
+{
+    /*1.超出的部分隐藏 */
+        overflow: hidden;
+    /*2. 文字用省略号替代超出的部分 */
+        text-overflow: ellipsis;
+    /* 3. 弹性伸缩盒子模型显示 */
+        display: -webkit-box;
+    /* 4. 限制在一个块元素显示的文本的行数 */
+        -webkit-line-clamp: 2;
+    /* 5. 设置或检索伸缩盒对象的子元素的排列方式 */
+        -webkit-box-orient: vertical;
+}
 ```
 
 ### 文本竖向排列
@@ -347,8 +372,8 @@ display: -webkit-box;
 
 此属性指定块流动方向，即块级容器堆叠的方向，以及行内内容在块级容器中的流动方向。
 
-```javascript
-div {
+```css
+{
     writing-mode: vertical-lr;
 }
 
@@ -357,6 +382,66 @@ div {
 ### 阴影
 
 ```css
-    box-shadow: 0 0 20px 13px red; // 常用给盒子添加阴影
-    filter: drop-shadow(0px 0px 22px red); // 通过滤镜添加阴影,不支持IE
+{
+    box-shadow: 0 0 20px 13px red;
+    filter: drop-shadow(0px 0px 22px red);
+}
 ```  
+
+## 响应式布局
+
+### 方案1 纯CSS 通过使用 REM 和 VW 以及 media 媒体查询实现响应式布局
+
+以750px设计图为基准，为方便计算根元素字体大小取100px。
+进行响应式换算则是 13.33vw, 所以默认的根元素字体大小为
+```css
+html {
+    font-size: 13.33vw;
+}
+```
+
+最后通过媒体查询的方式设置当屏幕宽度超出设计稿宽度时,进行兼容处理
+
+演示DEMO
+```html
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>响应式测试</title>
+</head>
+<body>
+	<main>
+		<div class="d1">
+			测试盒子1
+		</div>
+		<div class="d2">
+			<span>测试盒子2</span>
+			<div class="child-1"></div>
+		</div>
+	</main>
+</body>
+<style type="text/css">
+	html {
+		font-size: 13.33vw;
+	}
+	.d1 {
+		font-size: 0.32rem;
+	}
+	.d2 {
+		font-size: 0.24rem;
+	}
+	.child-1 {
+		width: 2rem;
+		height: 2rem;
+		background: red;
+	}
+	@media screen and (min-width: 750px) {
+		html {
+			font-size: 100px;
+		}
+	}
+</style>
+</html>
+```
