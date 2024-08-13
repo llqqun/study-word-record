@@ -456,7 +456,7 @@ const num1 = ~~ 1.19;
 const num2 = 2.29 | 0;
 const num3 = 3.09 >> 0;
 //类似使用
-Math.floor() 或 Math.ceil()
+// Math.floor() 或 Math.ceil()
 // num1 num2 num3 => 1 2 3
 ```
 
@@ -607,7 +607,9 @@ navigator.clipboard.writeText(selectedText)
 css
 
 ```css
-user-select: none;
+{
+ user-select: none;
+}
 ```
 
 js

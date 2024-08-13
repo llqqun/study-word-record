@@ -43,3 +43,26 @@ document.onselectstart = function() {
 
 滚动元素的父容器，使被调用 scrollIntoView() 的元素对用户可见。
 
+### 监听指定元素的高度变化,触发滚动
+
+```javascript
+function elementHeightChangeScrollEnd (ele, callback) {
+  if (typeof ele === 'string') {
+    ele = document.querySelector(ele)
+  } else if (typeof ele === 'object') {
+    const domProp = ele.constructor.name
+    if (!domProp.includes('Element')) {
+      throw new Error('参数错误:请传入一个Element对象')
+    }
+  }
+  const config = { attributes: true, childList: true, subtree: true }
+  const fun = (typeof callback === 'function')
+    ? callback
+    : function () {
+      document.body.scrollIntoView({ behavior: 'smooth', block: 'end', inline: 'nearest' })
+    }
+  const observer = new MutationObserver(fun)
+  observer.observe(ele, config)
+  return observer
+}
+```
