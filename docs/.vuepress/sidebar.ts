@@ -27,7 +27,8 @@ export default {
       text: 'Python',
       children: [
           "/views/server/python/index.md",
-          "/views/server/python/var.md"
+          "/views/server/python/var.md",
+          "/views/server/python/issue.md"
       ]
     }
   ],

@@ -66,3 +66,43 @@ function elementHeightChangeScrollEnd (ele, callback) {
   return observer
 }
 ```
+
+## 监听元素的变化 MutationObserver API
+
+MutationObserver 是一个可以观察DOM树变化的接口，它可以监听到DOM节点的添加或删除、属性的变化等。
+
+使用步骤如下：   
+  - 创建一个新的 MutationObserver 实例。
+  - 定义一个回调函数，当被观察的节点发生变化时调用此函数。
+  - 使用 observe 方法指定要观察的目标节点以及观察的配置选项。
+  - 当不再需要观察时，调用 disconnect 方法停止观察。
+
+```javascript
+// 创建一个回调函数
+const callback = function(mutationsList, observer) {
+    // 遍历所有mutation记录
+    for(let mutation of mutationsList) {
+        if (mutation.type === 'childList') {
+            console.log('A child node has been added or removed.');
+        }
+        else if (mutation.type === 'attributes') {
+            console.log('The ' + mutation.attributeName + ' attribute was modified.');
+        }
+    }
+};
+
+// 创建一个observer实例并传入回调函数
+const observer = new MutationObserver(callback);
+
+// 选择需要观察变动的DOM节点目标
+const targetNode = document.getElementById('some-id');
+
+// 设置observer的配置（传递给observe方法）
+const config = { attributes: true, childList: true, subtree: true };
+
+// 开始观察目标节点
+observer.observe(targetNode, config);
+
+// 不再需要观察的时候停止观察
+observer.disconnect();
+```
