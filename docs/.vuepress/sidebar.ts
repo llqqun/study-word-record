@@ -30,6 +30,12 @@ export default {
           "/views/server/python/var.md",
           "/views/server/python/issue.md"
       ]
+    },
+    {
+      text: 'Linux',
+      children: [
+          "/views/server/linux/index.md"
+      ]
     }
   ],
   "/views/javaScript/": [

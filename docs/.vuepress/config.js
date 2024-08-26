@@ -9,7 +9,7 @@ const __dirname = getDirname(import.meta.url)
 
 
 export default defineUserConfig({
-  base: '/',
+  base: '/static_doc/',
   lang: 'zh-CN',
   title: 'Study Center',
   description: 'WEB笔记本',
