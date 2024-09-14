@@ -22,7 +22,7 @@ export default {
   "/views/miniProject": [
     { text: "小程序", children: ["/views/miniProject/wx.md"] }
   ],
-  "/views/server/python": [
+  "/views/server/python/": [
     {
       text: 'Python',
       children: [
@@ -30,11 +30,14 @@ export default {
           "/views/server/python/var.md",
           "/views/server/python/issue.md"
       ]
-    },
+    }
+  ],
+  "/views/server/linux/": [
     {
       text: 'Linux',
       children: [
-          "/views/server/linux/index.md"
+          "/views/server/linux/index.md",
+          "/views/server/linux/redis.md"
       ]
     }
   ],
