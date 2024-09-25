@@ -602,6 +602,45 @@ const text = await navigator.clipboard.readText();
 navigator.clipboard.writeText(selectedText)
 ```
 
+浏览器兼容支持实例
+
+```js
+ try {
+  const copyContent = '123'
+  if (window.navigator.clipboard) {
+    window.navigator.clipboard.writeText(copyContent).then(
+      () => {
+        this.$message.success('复制成功')
+      },
+      () => {
+        this.$message.error('复制失败!')
+      }
+    )
+  } else if (document.execCommand) {
+    const $input = document.createElement('input')
+    document.body.appendChild($input)
+    $input.style.position = 'fixed'
+    $input.style.clipPath = 'inset(0 0 0 0)'
+    $input.value = copyContent
+    $input.select()
+    const res = document.execCommand('copy')
+    this.$nextTick(() => {
+      document.body.removeChild($input)
+    })
+    this.$message({
+      type: res ? 'success' : 'error',
+      message: res ? '复制成功' : '复制失败',
+      duration: 1500
+    })
+  } else {
+    this.$message.error('浏览器不支持复制功能!')
+  }
+} catch (error) {
+  this.$message.error('复制失败')
+}
+
+```
+
 ## 实现页面不可复制
 
 css
