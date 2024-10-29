@@ -100,6 +100,38 @@ package-lock=false;     //在安装时忽略lock文件。
 loglevel=timing；      // 安装依赖包的时候指定日志的类型
 ```
 
+## jsconfig.json
+
+配置js工程项目文件
+
+```json
+{
+  "compilerOptions": {
+       "baseUrl": "./",
+       "allowJs": false,
+       "alwaysStrict": false,
+       "checkJs": false,
+       "declaration": false,
+       "declarationDir": "",
+       "downlevelIteration": true,
+       "emitDecoratorMetadata": false,
+       "esModuleInterop": false,
+       "experimentalDecorators": false,
+       "forceConsistentCasingInFileNames": true,
+       "importHelpers": false,
+       "jsx": "preserve",
+       "jsxFactory": "",
+       "lib": ["es2015"],
+       "module": "es6",
+       "target": "es6",
+       "paths": {
+          "@/*": ["src/*"]
+        }
+   },
+   "exclude": ["node_modules", "dist"]
+}
+```
+
 ## 私有仓库搭建
 
 事前准备
