@@ -41,6 +41,15 @@ export default {
       ]
     }
   ],
+  "/views/server/tool": [
+    {
+      text: '工具',
+      children: [
+          "/views/server/tool/index.md",
+          "/views/server/tool/ollama.md",
+      ]
+    }
+  ],
   "/views/javaScript/": [
     {
       text: "javaScript",
@@ -95,16 +104,18 @@ export default {
   "/views/tool/": [
     {
       text: "TOOL",
-      children: ["/views/tool/webstorm.md",
-      "/views/tool/videojs.md",
-      "/views/tool/uniapp.md",
-      "/views/tool/tool.md",
-      "/views/tool/package.md",
-      "/views/tool/nginx.md",
-      "/views/tool/git.md",
-      "/views/tool/docker.md",
-      "/views/tool/NavicatPremium.md",
-      "/views/tool/window.md",
+      children: [
+        "/views/tool/webstorm.md",
+        "/views/tool/videojs.md",
+        "/views/tool/uniapp.md",
+        "/views/tool/tool.md",
+        "/views/tool/package.md",
+        "/views/tool/nginx.md",
+        "/views/tool/git.md",
+        "/views/tool/docker.md",
+        "/views/tool/NavicatPremium.md",
+        "/views/tool/window.md",
+        "/views/tool/markdown.md"
     ]
     },
   ],

@@ -18,7 +18,8 @@ export default [
     text: "服务端",
     children: [
       { text: "Python", link: "/views/server/python/" },
-      { text: "Linux", link: "/views/server/linux/" }
+      { text: "Linux", link: "/views/server/linux/" },
+      { text: "TooL", link: "/views/server/tool/" },
     ]
   },
   {
