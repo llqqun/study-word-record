@@ -1,4 +1,4 @@
-# DOKER
+# DOCKER
 
 ## 常用命令 
 

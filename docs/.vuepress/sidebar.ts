@@ -91,7 +91,7 @@ export default {
   ],
   "/views/tinymce/": [
     {
-      text: "tinymce6记录",
+      text: "tinymce",
       children: ["/views/tinymce/introduce.md"],
     },
   ],
