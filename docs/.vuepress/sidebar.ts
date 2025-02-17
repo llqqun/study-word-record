@@ -28,7 +28,8 @@ export default {
       children: [
           "/views/server/python/index.md",
           "/views/server/python/var.md",
-          "/views/server/python/issue.md"
+          "/views/server/python/issue.md",
+          "/views/server/python/tool.md"
       ]
     }
   ],
