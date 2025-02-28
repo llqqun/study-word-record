@@ -43,4 +43,8 @@ conda install numpy
 conda update numpy
 conda remove numpy
 conda list
+# 导出到YAML文件（推荐）
+conda env export > environment.yml
+# 根据YAML文件创建新环境
+conda env create -f environment.yml
 ```
