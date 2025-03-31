@@ -3,7 +3,16 @@
 
 ## 包管理器
 
-pip命令
+### pip命令
+
+更换全局pip镜像源
+配置文件路径
+  >Windows：C:\Users\Administrator\AppData\Roaming\pip\pip.ini
+  >Linux/macOS：~/.pip/pip.conf
+
+```
+pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+```
 
 ```cmd
 // 安装
@@ -25,7 +34,7 @@ pip search search_term
 pip freeze > requirements.txt
 ```
 
-conda 命令
+### conda 命令
 
 ```cmd
 // 创建conda 环境指定python版本
