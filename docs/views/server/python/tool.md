@@ -48,3 +48,16 @@ conda env export > environment.yml
 # 根据YAML文件创建新环境
 conda env create -f environment.yml
 ```
+
+conda 关闭默认激活
+
+```cmd
+
+conda config --set auto_activate_base false
+```
+
+显示当前状态
+
+```cmd
+conda config --show | findstr auto_activate_base
+```
