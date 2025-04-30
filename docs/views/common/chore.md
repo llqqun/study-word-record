@@ -2,8 +2,78 @@
 
 [国内镜像配置](https://npmmirror.com/?spm=a2c6h.24755359.0.0.58f74dcc3VVCku)
 
+原始镜像地址 https://registry.npmjs.org/
+
 ```
 npm --registry=https://registry.npmmirror.com
+```
+
+获取当前镜像
+```
+npm config get registry
+```
+
+设置为淘宝镜像
+```
+npm config set registry https://registry.npmmirror.com
+```
+
+## 镜像管理工具nrm
+
+```
+npm install -g nrm
+```
+
+查看当前镜像
+```
+nrm ls
+```
+
+切换镜像
+```
+nrm use taobao
+```
+
+添加镜像
+```
+nrm add <registry> <url>
+```
+
+删除镜像
+```
+nrm del <registry>
+```
+
+## npm 常用命令
+
+```
+npm init -y // 初始化项目
+npm install // 安装依赖
+npm install <package_name> // 安装依赖
+npm install <package_name>@<version> // 安装指定版本的依赖
+npm install -g <package_name> // 全局安装依赖
+npm install -D <package_name> // 开发环境安装依赖
+npm install -S <package_name> // 生产环境安装依赖
+npm uninstall <package_name> // 卸载依赖
+npm uninstall -g <package_name> // 卸载全局依赖
+npm update // 更新依赖
+npm update <package_name> // 更新指定依赖
+npm update -g <package_name> // 更新全局依赖
+npm list // 列出所有依赖
+npm list -g // 列出所有全局依赖
+npm search <package_name> // 搜索依赖
+npm info <package_name> // 查看依赖信息
+npm help <command> // 查看命令帮助
+npm cache clean // 清理缓存
+npm config set <key> <value> // 设置配置
+npm config get <key> // 获取配置
+npm config delete <key> // 删除配置
+npm config list // 列出所有配置
+npm config edit // 编辑配置文件
+npm config get prefix // 获取npm全局安装目录
+npm config get cache // 获取npm缓存目录
+npm config get userconfig // 获取npm配置文件路径
+npm config get init-module // 获取npm初始化模块路径
 ```
 
 ## package.json

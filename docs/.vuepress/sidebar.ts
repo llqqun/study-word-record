@@ -70,7 +70,7 @@ export default {
   ],
   "/views/common/": [
     {
-      text: "杂谈",
+      text: "工具",
       children: [
         "/views/common/chore.md",
         "/views/common/linux.md",
@@ -106,6 +106,7 @@ export default {
     {
       text: "TOOL",
       children: [
+        "/views/tool/index.md",
         "/views/tool/webstorm.md",
         "/views/tool/videojs.md",
         "/views/tool/uniapp.md",
