@@ -74,6 +74,7 @@ npm config get prefix // 获取npm全局安装目录
 npm config get cache // 获取npm缓存目录
 npm config get userconfig // 获取npm配置文件路径
 npm config get init-module // 获取npm初始化模块路径
+npm publish // 发布包
 ```
 
 ## package.json
