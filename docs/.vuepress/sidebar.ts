@@ -117,7 +117,8 @@ export default {
         "/views/tool/docker.md",
         "/views/tool/NavicatPremium.md",
         "/views/tool/window.md",
-        "/views/tool/markdown.md"
+        "/views/tool/markdown.md",
+        "/views/tool/ps.md",
     ]
     },
   ],
