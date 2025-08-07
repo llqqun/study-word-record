@@ -101,3 +101,18 @@ git remote add origin ssh://git@git.ftling.com:10020/mediation/ft-mediate-client
 git push -u origin --all
 git push -u origin --tags
 ```
+
+## git统计相关
+
+```git bash
+git log --since="2025-08-04" --until="2025-08-07" --author="$(git config user.name)" --pretty=tformat: --numstat | awk '{add += $1; subs += $2; loc += $1 - $2} END {printf "增加行数: %s, 删除行数: %s, 净增行数: %s\n", add, subs, loc}'
+```
+ 1. 统计时间
+--since="1 week ago" 获取一周内的所有提交(设置统计时间)
+ 2. 只显示当前用户的提交
+ --author="$(git config user.name)"
+ 3. 格式化输出
+--pretty=tformat: 格式化输出为空，只显示后面的numstat结果
+ 4. 显示文件修改统计
+--numstat 显示每个提交的文件修改统计（增加行数和删除行数）
+
