@@ -104,8 +104,8 @@ git push -u origin --tags
 
 ## git统计相关
 
-```git bash
-git log --since="2025-08-04" --until="2025-08-07" --author="$(git config user.name)" --pretty=tformat: --numstat | awk '{add += $1; subs += $2; loc += $1 - $2} END {printf "增加行数: %s, 删除行数: %s, 净增行数: %s\n", add, subs, loc}'
+```bash
+git log --since="2025-08-04" --until="2025-08-08" --author="$(git config user.name)" --pretty=tformat: --numstat | awk '{add += $1; subs += $2; loc += $1 - $2} END {printf "增加行数: %s, 删除行数: %s, 净增行数: %s\n", add, subs, loc}'
 ```
 
 只能在git bash 环境运行,window环境没有awk工具
@@ -123,36 +123,35 @@ git log --since="2025-08-04" --until="2025-08-07" --author="$(git config user.na
 
 ```bash
 #!/bin/bash
-# 用法: ./git-report.sh "2025-07-01" "2025-07-31" "作者名字(可选)"
-# 如果不指定作者，会统计所有人
-echo "脚本开始运行..."
-echo "当前目录: $(pwd)"
-echo "参数: $1 $2 $3"
+# 用法: ./git-report.sh "2025-08-04" "2025-08-08"
+
 START_DATE=$1
 END_DATE=$2
-AUTHOR=$3
 
 if [ -z "$START_DATE" ] || [ -z "$END_DATE" ]; then
-    echo "用法: $0 <开始日期> <结束日期> [作者名字]"
+    echo "用法: $0 <开始日期> <结束日期>"
     exit 1
 fi
 
-AUTHOR_FILTER=""
-if [ -n "$AUTHOR" ]; then
-    AUTHOR_FILTER="--author=\"$AUTHOR\""
+# 自动读取当前 Git 用户名
+AUTHOR_NAME=$(git config user.name)
+if [ -z "$AUTHOR_NAME" ]; then
+    echo "❌ 未检测到 git user.name，请先运行：git config --global user.name \"你的名字\""
+    exit 1
 fi
+AUTHOR_FILTER="$AUTHOR_NAME"
 
 OUTPUT_FILE="git_report_${START_DATE}_to_${END_DATE}.txt"
 
-echo "Git 项目统计（$START_DATE 到 $END_DATE）" > "$OUTPUT_FILE"
+echo "Git 项目统计（$START_DATE 到 $END_DATE, 作者: $AUTHOR_NAME）" > "$OUTPUT_FILE"
 echo "=========================================" >> "$OUTPUT_FILE"
 
 # 1. 提交次数
-COMMIT_COUNT=$(git log --since="$START_DATE" --until="$END_DATE" $AUTHOR_FILTER --pretty=%h | wc -l)
+COMMIT_COUNT=$(git log --since="$START_DATE" --until="$END_DATE" --author="$AUTHOR_FILTER" --pretty=%h | wc -l)
 echo "提交次数: $COMMIT_COUNT" >> "$OUTPUT_FILE"
 
 # 2. 代码增删行
-STATS=$(git log --since="$START_DATE" --until="$END_DATE" $AUTHOR_FILTER --pretty=tformat: --numstat \
+STATS=$(git log --since="$START_DATE" --until="$END_DATE" --author="$AUTHOR_FILTER" --pretty=tformat: --numstat \
     | awk '{add+=$1; del+=$2} END {print add, del, add-del}')
 ADD_LINES=$(echo $STATS | awk '{print $1}')
 DEL_LINES=$(echo $STATS | awk '{print $2}')
@@ -162,20 +161,21 @@ echo "删除行数: $DEL_LINES" >> "$OUTPUT_FILE"
 echo "净增行数: $NET_LINES" >> "$OUTPUT_FILE"
 
 # 3. 涉及文件数
-FILE_COUNT=$(git log --since="$START_DATE" --until="$END_DATE" $AUTHOR_FILTER --pretty=tformat: --name-only \
+FILE_COUNT=$(git log --since="$START_DATE" --until="$END_DATE" --author="$AUTHOR_FILTER" --pretty=tformat: --name-only \
     | grep -v '^$' | sort -u | wc -l)
 echo "涉及文件数: $FILE_COUNT" >> "$OUTPUT_FILE"
 
-# 4. 提交详情
-# git log --since="$START_DATE" --until="$END_DATE" $AUTHOR_FILTER \
-#     --pretty=format:'%ad %h %s' --date=format:'%Y-%m-%d %H:%M:%S' >> "$OUTPUT_FILE"
+echo "" >> "$OUTPUT_FILE"
+echo "提交记录：" >> "$OUTPUT_FILE"
+echo "-----------------------------------------" >> "$OUTPUT_FILE"
 
-git log --since="$START_DATE" --until="$END_DATE" $AUTHOR_FILTER \
+# 4. 提交详情（完整 message + 分隔线）
+git log --since="$START_DATE" --until="$END_DATE" --author="$AUTHOR_FILTER" \
     --pretty=format:'%ad %h%n%B%n-----------------------------------------' \
     --date=format:'%Y-%m-%d %H:%M:%S' >> "$OUTPUT_FILE"
 
-
 echo "" >> "$OUTPUT_FILE"
 echo "代码统计数据和提交信息已保存到: $OUTPUT_FILE"
+
 
 ```

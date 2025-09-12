@@ -10,6 +10,22 @@
   >Windows：C:\Users\Administrator\AppData\Roaming\pip\pip.ini
   >Linux/macOS：~/.pip/pip.conf
 
+```ini
+[global]
+index-url = https://mirrors.aliyun.com/pypi/simple/
+timeout = 60
+```
+
+
+镜像源
+  >清华：https://pypi.tuna.tsinghua.edu.cn/simple  
+  >阿里云：https://mirrors.aliyun.com/pypi/simple/  
+  >中国科技大学 https://pypi.mirrors.ustc.edu.cn/simple/  
+  >华中理工大学：https://pypi.hustunique.com/  
+  >山东理工大学：https://pypi.sdutlinux.org/  
+  >豆瓣：https://pypi.douban.com/simple/  
+  >华为云：https://mirrors.huaweicloud.com/repository/pypi/simple  
+
 ```
 pip config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
 ```
