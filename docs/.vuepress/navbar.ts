@@ -23,6 +23,12 @@ export default [
     ]
   },
   {
+    text: "AI",
+    children: [
+      { text: "ollama", link: "/views/ai/ollama" },
+    ]
+  },
+  {
     text: "工具",
     link: "/views/tool/",
   },

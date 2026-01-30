@@ -46,8 +46,7 @@ export default {
     {
       text: '工具',
       children: [
-          "/views/server/tool/index.md",
-          "/views/server/tool/ollama.md",
+          "/views/server/tool/index.md"
       ]
     }
   ],
