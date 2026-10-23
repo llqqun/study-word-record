@@ -32,6 +32,6 @@ export default [
     text: "工具",
     link: "/views/tool/",
   },
-  { text: "面试", link: "/views/interview" },
+  { text: "面试", link: "/views/interview/" },
   { text: "FAQ", children: [] },
 ];

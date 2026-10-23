@@ -1,3 +1,46 @@
+import fs from 'node:fs'
+import nodePath from 'node:path'
+import { getDirname } from '@vuepress/utils'
+
+const __dirname = getDirname(import.meta.url)
+
+// 面试题手册所在目录：docs/views/interview/qd
+const INTERVIEW_DIR = nodePath.resolve(__dirname, '../views/interview/qd')
+
+/**
+ * 读取章节标题：
+ * 1. 优先取 frontmatter 里的 title
+ * 2. 其次取第一个一级/二级标题
+ * 3. 最后退化为文件名
+ */
+const readChapterTitle = (file: string): string => {
+  const raw = fs.readFileSync(nodePath.join(INTERVIEW_DIR, file), 'utf8')
+  const frontmatter = /^---\r?\n([\s\S]*?)\r?\n---/.exec(raw)
+  const frontmatterTitle = frontmatter?.[1].match(/^title:\s*(.+)$/m)?.[1]
+  if (frontmatterTitle) {
+    return frontmatterTitle.trim().replace(/^['"]|['"]$/g, '')
+  }
+  const heading = raw.split(/\r?\n/).find((line) => /^#{1,2}\s+/.test(line))
+  return heading
+    ? heading.replace(/^#{1,2}\s+/, '').trim()
+    : file.replace(/\.md$/, '')
+}
+
+/**
+ * 扫描目录自动生成章节菜单：
+ * 以后往 qd 目录里加 md，左侧菜单会自动出现，不用再手改配置
+ */
+const interviewChapters = fs.existsSync(INTERVIEW_DIR)
+  ? fs
+      .readdirSync(INTERVIEW_DIR)
+      .filter((file) => file.endsWith('.md'))
+      .sort((a, b) => a.localeCompare(b, 'en', { numeric: true }))
+      .map((file) => ({
+        text: readChapterTitle(file),
+        link: `/views/interview/qd/${file.replace(/\.md$/, '.html')}`,
+      }))
+  : []
+
 export default {
   "/views/vue3/": [
     {
@@ -75,7 +118,6 @@ export default {
         "/views/common/linux.md",
         "/views/common/canvas.md",
         "/views/common/mammoth.md",
-        "/views/common/GitFAQ.md",
       ],
     },
   ],
@@ -99,6 +141,17 @@ export default {
     {
       text: "webpack",
       children: ["/views/webpack/5.md", "/views/webpack/4.md"]
+    },
+  ],
+  // 面试题手册：统一挂在 /views/interview/ 下，章节菜单由上面的目录扫描生成
+  "/views/interview/": [
+    {
+      text: "前端面试题手册",
+      collapsible: true,
+      children: [
+        { text: "手册总览", link: "/views/interview/" },
+        ...interviewChapters,
+      ],
     },
   ],
   "/views/tool/": [
